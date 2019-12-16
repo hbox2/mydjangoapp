@@ -1,4 +1,5 @@
 import psycopg2
+from django.db import DatabaseError,transaction
 
 def connect_psql(req_first_name,req_last_name,req_email):
 	print("CONNECT PSQL")
@@ -17,8 +18,9 @@ def connect_psql(req_first_name,req_last_name,req_email):
 		conn.close()
 		return(records[0][0])
 
-	except:
+	except DatabaseError:
 		print("Write in database: ERROR")
+		transaction.rollback()
 
 def request_record_id(record_id):
 
@@ -35,13 +37,17 @@ def request_record_id(record_id):
 		cur.execute('SELECT * FROM django_table WHERE id=(%s)' % (record_id))
 
 		records = cur.fetchall()
+		if not records:
+			keys_records_id = None
+			return(keys_records_id)
+		
 		keys_record_id = records[0]
 		cur.close()
 		conn.close()
 		return(keys_record_id)
 
-	except:
-
+	except DatabaseError:
 		print("Reading from table:ERROR")
+		transaction.rollback()
 
 
