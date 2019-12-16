@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>A bit about us</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="{% static "css/main.css" %}">
+	</head>
+	<body>
+		<!-- Body -->
+		<div>
+			<center>
+			<div class="menu">
+				<a href="index.html"><img src="{% static "images/logo.jpg" %}" width="50" alt="Home" /></a>&nbsp;<a href="about_us.html" class="button">About Us</a>&nbsp;Contact Us
+			</div>
+			<div class="content">
+				<p>Please contact us throught the form below.</p>
+			</div>
+			<div class="form">
+				<form action="thank_you.html" method="post">
+				    {% csrf_token %}
+				    {{ form.as_p }}
+				    <input type="Submit" name="submit" value="Submit"/>
+				</form>
+
+			</div>
+			</center>
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<p class="copyright">&copy; <a href="index.html">Website</a></p>
+		</footer>
+
+
+	</body>
+<script>'undefined'=== typeof _trfq || (window._trfq = []);'undefined'=== typeof _trfd && (window._trfd=[]),_trfd.push({'tccl.baseHost':'secureserver.net'}),_trfd.push({'ap':'cpsh'},{'server':'p3plcpnl0769'}) // Monitoring performance to make your website faster. If you want to opt-out, please contact web hosting support.</script><script src='https://img1.wsimg.com/tcc/tcc_l.combined.1.0.6.min.js'></script>
+</html>
