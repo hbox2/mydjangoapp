@@ -4,7 +4,7 @@ from django.db import DatabaseError,transaction
 def connect_psql(req_first_name,req_last_name,req_email):
 	print("CONNECT PSQL")
 	try:
-		conn = psycopg2.connect(database='django_db',user='django_user',password='django_user_passwrd',host='localhost')
+		conn = psycopg2.connect(database='DBNAME',user='DBUSER',password='DBPASSWORD',host='localhost')
 		cur = conn.cursor()
 
 	except:
@@ -26,7 +26,7 @@ def request_record_id(record_id):
 
 	print("CONNECT PSQL")
 	try:
-		conn = psycopg2.connect(database='django_db',user='django_user',password='django_user_passwrd',host='localhost')
+		conn = psycopg2.connect(database='DBNAME',user='DBUSER',password='DBPASSWORD',host='localhost')
 		cur = conn.cursor()
 
 	except:
